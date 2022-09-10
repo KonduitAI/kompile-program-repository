@@ -219,7 +219,7 @@ fi
 
 }
 
-
+FS=- read -r OS ARCHITECTURE <<< "${ND4J_CLASSIFIER}"
 
 
 
@@ -420,7 +420,7 @@ fi
                     fi
                    echo "Building dl4j distribution"
                     ./kompile install install-requisites --os="${OS}" \
-                                                                 --architecture="${PLATFORM}" \
+                                                                 --architecture="${ARCHITECTURE}" \
                                                                  --nd4jBackend="${ND4J_BACKEND}" \
 
                    ./kompile build clone-build \
