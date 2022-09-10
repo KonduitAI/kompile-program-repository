@@ -319,6 +319,7 @@ fi
              source "$USER/.kompile/backend-envs/${ND4J_BACKEND}/${OS}-${PLATFORM}.env"
          fi
         ./kompile build clone-build \
+                     --nd4jBackend=${ND4J_BACKEND} \
                      --libnd4jUseLto=${ND4J_USE_LTO} \
                      --dl4jBranchName=${DL4J_BRANCH} \
                      --konduitServingBranchName=${KONDUIT_SERVING_BRANCH} \
