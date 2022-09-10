@@ -18,7 +18,6 @@
 
 set -eu
 
-./kompile install all
 # Use > 1 to consume two arguments per pass in the loop (e.g. each
 # argument has a corresponding value to go with it).
 # Use > 0 to consume one or more arguments per pass in the loop (e.g.
