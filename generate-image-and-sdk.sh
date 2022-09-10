@@ -222,8 +222,7 @@ fi
 
 }
 
-FS=- read -r OS ARCHITECTURE <<< "${ND4J_CLASSIFIER}"
-echo "READ ARCHITECTURE AND OS AS ${OS} ${ARCHITECTURE}"
+
 
 
 function set_binary_extension {
@@ -422,6 +421,7 @@ fi
                                 source "$USER/.kompile/backend-envs/${ND4J_BACKEND}/${OS}-${PLATFORM}.env"
                     fi
                    echo "Building dl4j distribution"
+                    echo "Installing Pre requisites for OS ${OS} and architecture ${ARCHITECTURE}"
                     ./kompile install install-requisites --os="${OS}" \
                                                                  --architecture="${ARCHITECTURE}" \
                                                                  --nd4jBackend="${ND4J_BACKEND}" \
