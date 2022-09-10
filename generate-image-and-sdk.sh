@@ -211,9 +211,12 @@ if [ -z "${ND4J_CLASSIFIER}" ]; then
 if [ "${PLATFORM}" == "aarch64" ];then
       PLATFORM="arm64"
 fi
- BUILD_PLATFORM="${OS}-${PLATFORM}"
+      BUILD_PLATFORM="${OS}-${PLATFORM}"
    else
         BUILD_PLATFORM="${ND4J_CLASSIFIER}"
+        export FS=- 
+        read -r OS ARCHITECTURE <<< "${ND4J_CLASSIFIER}"
+        echo "READ ARCHITECTURE AND OS AS ${OS} ${ARCHITECTURE}"
 fi
 
 
