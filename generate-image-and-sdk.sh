@@ -305,7 +305,8 @@ fi
                elif [ "$ASSEMBLY" != "true" ]; then
                     POM_GENERATE_COMMAND="$(./kompile build  pipeline-command-generate --assembly=${ASSEMBLY}   --server=${IS_SERVER} --nd4jBackend="${ND4J_BACKEND}" --nd4jBackendClassifier="${ND4J_CLASSIFIER}" --mainClass=${MAIN_CLASS}   --pipelineFile=${PIPELINE_FILE}  --numpySharedLibrary=${BUILD_SHARED_LIBRARY}  --imageName=${IMAGE_NAME}  --outputFile=${POM_GENERATE_OUTPUT_PATH})"
               else
-                  POM_GENERATE_COMMAND="$(./kompile build  pipeline-command-generate --assembly=${ASSEMBLY}  --server=false --nd4jBackend="${ND4J_BACKEND}" --nd4jBackendClassifier="${ND4J_CLASSIFIER}"      --outputFile=${POM_GENERATE_OUTPUT_PATH})"
+                  echo "Running assembly pom generate"
+                  POM_GENERATE_COMMAND="$(./kompile build  pipeline-command-generate --assembly=\"${ASSEMBLY}\"  --server=\"false\" --nd4jBackend=\"${ND4J_BACKEND}\" --nd4jBackendClassifier=\"${ND4J_CLASSIFIER}\"      --outputFile=${POM_GENERATE_OUTPUT_PATH})"
 
       fi
 
