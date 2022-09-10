@@ -206,11 +206,18 @@ else
         OS="linux"
 fi
 
-PLATFORM="$(lscpu | grep Architecture | tr -d ':'  | sed 's/Architecture//' | xargs echo -n)"
+#Set a platform default if one isn't found
+if [ -z "${ND4J_CLASSIFIER}" ]; then
+  PLATFORM="$(lscpu | grep Architecture | tr -d ':'  | sed 's/Architecture//' | xargs echo -n)"
 if [ "${PLATFORM}" == "aarch64" ];then
       PLATFORM="arm64"
 fi
-BUILD_PLATFORM="${OS}-${PLATFORM}"
+ BUILD_PLATFORM="${OS}-${PLATFORM}"
+   else
+        BUILD_PLATFORM="${ND4J_CLASSIFIER}"
+fi
+
+
 }
 
 
@@ -241,10 +248,6 @@ if [ -z "${BUILD_PLATFORM}" ]; then
   set_platform
 fi
 
-
-if [ -z "${BUILD_PLATFORM}" ]; then
-  ND4J_CLASSIFIER="${BUILD_PLATFORM}"
-fi
 
 set_binary_extension
 
