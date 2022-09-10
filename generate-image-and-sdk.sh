@@ -214,8 +214,8 @@ fi
       BUILD_PLATFORM="${OS}-${PLATFORM}"
    else
         BUILD_PLATFORM="${ND4J_CLASSIFIER}"
-        export IFS=- 
-        read -r OS ARCHITECTURE <<< "${ND4J_CLASSIFIER}"
+        IFS=- read -r OS ARCHITECTURE <<< "${ND4J_CLASSIFIER}"
+        
         echo "READ ARCHITECTURE AND OS AS ${OS} ${ARCHITECTURE}"
 fi
 
