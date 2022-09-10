@@ -331,8 +331,7 @@ fi
                      --buildDl4j \
                      --buildKonduitServing="${ASSEMBLY}" \
                      --libnd4jClassifier="${ND4J_CLASSIFIER}" \
-                     --buildCpuBackend="${BUILD_CPU_BACKEND}" \
-                      --buildCudaBackend="${BUILD_CUDA_BACKEND}" \
+                       --nd4jBackend="${ND4J_BACKEND}" \
                       --libnd4jHelper="${ND4J_HELPER}" \
                       --libnd4jOperations="${ND4J_OPERATIONS}" \
                       --libnd4jDataTypes="${ND4J_DATATYPES}"
@@ -435,8 +434,7 @@ fi
                                 --buildDl4j \
                                 --platform="${ND4J_CLASSIFIER}" \
                                 --libnd4jClassifier="${ND4J_CLASSIFIER}" \
-                                --buildCpuBackend="${BUILD_CPU_BACKEND}" \
-                                 --buildCudaBackend="${BUILD_CUDA_BACKEND}" \
+                                --nd4jBackend="${ND4J_BACKEND}" \
                                  --libnd4jHelper="${ND4J_HELPER}" \
                                  --libnd4jOperations="${ND4J_OPERATIONS}" \
                                  --libnd4jDataTypes="${ND4J_DATATYPES}"
