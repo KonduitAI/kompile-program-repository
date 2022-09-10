@@ -301,11 +301,11 @@ fi
       echo "Outputting pom file for build to ${POM_GENERATE_OUTPUT_PATH}"
       # shellcheck disable=SC2236
       if  [ ! -z "${BUILD_HEAP_SPACE}" ] && [ "$BUILD_HEAP_SPACE" != "" ]; then
-               POM_GENERATE_COMMAND="$(./kompile build  pipeline-command-generate --assembly=${ASSEMBLY} --server=${IS_SERVER} --nd4jBackend=${ND4J_BACKEND} --nd4jBackendClassifier=${ND4J_CLASSIFIER} --mainClass=${MAIN_CLASS}   --pipelineFile=${PIPELINE_FILE}  --numpySharedLibrary=${BUILD_SHARED_LIBRARY}  --imageName=${IMAGE_NAME}  --outputFile=${POM_GENERATE_OUTPUT_PATH} --nativeImageJvmArg=\"-Xmx${BUILD_HEAP_SPACE}\")"
+               POM_GENERATE_COMMAND="$(./kompile build  pipeline-command-generate --assembly=${ASSEMBLY} --server=${IS_SERVER} --nd4jBackend="${ND4J_BACKEND}" --nd4jBackendClassifier="${ND4J_CLASSIFIER}" --mainClass=${MAIN_CLASS}   --pipelineFile=${PIPELINE_FILE}  --numpySharedLibrary=${BUILD_SHARED_LIBRARY}  --imageName=${IMAGE_NAME}  --outputFile=${POM_GENERATE_OUTPUT_PATH} --nativeImageJvmArg=\"-Xmx${BUILD_HEAP_SPACE}\")"
                elif [ "$ASSEMBLY" != "true" ]; then
-                    POM_GENERATE_COMMAND="$(./kompile build  pipeline-command-generate --assembly=${ASSEMBLY}   --server=${IS_SERVER} --nd4jBackend=${ND4J_BACKEND} --nd4jBackendClassifier=${ND4J_CLASSIFIER} --mainClass=${MAIN_CLASS}   --pipelineFile=${PIPELINE_FILE}  --numpySharedLibrary=${BUILD_SHARED_LIBRARY}  --imageName=${IMAGE_NAME}  --outputFile=${POM_GENERATE_OUTPUT_PATH})"
+                    POM_GENERATE_COMMAND="$(./kompile build  pipeline-command-generate --assembly=${ASSEMBLY}   --server=${IS_SERVER} --nd4jBackend="${ND4J_BACKEND}" --nd4jBackendClassifier="${ND4J_CLASSIFIER}" --mainClass=${MAIN_CLASS}   --pipelineFile=${PIPELINE_FILE}  --numpySharedLibrary=${BUILD_SHARED_LIBRARY}  --imageName=${IMAGE_NAME}  --outputFile=${POM_GENERATE_OUTPUT_PATH})"
               else
-                  POM_GENERATE_COMMAND="$(./kompile build  pipeline-command-generate --assembly=${ASSEMBLY}  --server=false --nd4jBackend=${ND4J_BACKEND} --nd4jBackendClassifier=${ND4J_CLASSIFIER}      --outputFile=${POM_GENERATE_OUTPUT_PATH})"
+                  POM_GENERATE_COMMAND="$(./kompile build  pipeline-command-generate --assembly=${ASSEMBLY}  --server=false --nd4jBackend="${ND4J_BACKEND}" --nd4jBackendClassifier="${ND4J_CLASSIFIER}"      --outputFile=${POM_GENERATE_OUTPUT_PATH})"
 
       fi
 
