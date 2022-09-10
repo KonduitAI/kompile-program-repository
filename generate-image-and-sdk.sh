@@ -314,7 +314,7 @@ fi
     BUILD_DIR="$(pwd)"
     if [ "$ASSEMBLY" == "false" ]; then
         ./kompile install install-requisites --os="${OS}" \
-                                              --architecture="${PLATFORM}" \
+                                              --architecture="${ARCHITECTURE}" \
                                               --nd4jBackend="${ND4J_BACKEND}" \
 
          if test -f "$USER/.kompile/backend-envs/${ND4J_BACKEND}/${OS}-${PLATFORM}.env"; then
