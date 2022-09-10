@@ -220,7 +220,7 @@ fi
 }
 
 FS=- read -r OS ARCHITECTURE <<< "${ND4J_CLASSIFIER}"
-
+echo "READ ARCHITECTURE AND OS AS ${OS} ${ARCHITECTURE}"
 
 
 function set_binary_extension {
