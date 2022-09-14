@@ -29,16 +29,16 @@ if [[ "$CUDA_VERSION_MAJOR_MINOR" == *"10.2"* ]]; then
  
 fi
 
-sudo tar -hxvf cudnn.tgz -C "$CUDA_PATH"
+tar -hxvf cudnn.tgz -C "$CUDA_PATH"
 if [[ "$CUDA_VERSION_MAJOR_MINOR" == *"11.6"* ]]; then
    echo "Listing base Cuda Path at $CUDA_PATH"
    ls "$CUDA_PATH"
    echo "Listing cuda path with archive"
    ls "$CUDA_PATH/cudnn-linux-x86_64-8.3.2.44_cuda11.5-archive/"
-   sudo cp -rf  "$CUDA_PATH/cudnn-linux-x86_64-8.3.2.44_cuda11.5-archive/include/"* "$CUDA_PATH/include"
+   cp -rf  "$CUDA_PATH/cudnn-linux-x86_64-8.3.2.44_cuda11.5-archive/include/"* "$CUDA_PATH/include"
    echo "Listing cuda include dir after cudnn copy"
    ls "$CUDA_PATH/include"
-   sudo cp -rf  "$CUDA_PATH/cudnn-linux-x86_64-8.3.2.44_cuda11.5-archive/lib/"* "$CUDA_PATH/lib64"
+   cp -rf  "$CUDA_PATH/cudnn-linux-x86_64-8.3.2.44_cuda11.5-archive/lib/"* "$CUDA_PATH/lib64"
    echo "Listing cuda lib directory after cudnn copy"
    ls "$CUDA_PATH/lib64"
 
