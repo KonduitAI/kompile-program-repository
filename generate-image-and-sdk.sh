@@ -290,7 +290,7 @@ function source_backend_end() {
      if [ -z "${ND4J_HELPER}" ]; then
                       echo "Loading environment for backend ${ND4J_BACKEND}"
                       source "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${ND4J_CLASSIFIER}.env"
-               elif test -f "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${ND4J_CLASSIFIER${ND4J_HELPER}.env"; then
+               elif test -f "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${ND4J_CLASSIFIER}${ND4J_HELPER}.env"; then
                     echo "Loading environment for backend ${ND4J_BACKEND}"
                     source "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${ND4J_CLASSIFIER}${ND4J_HELPER}.env"
                     else 
