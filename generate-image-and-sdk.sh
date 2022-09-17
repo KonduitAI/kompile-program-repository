@@ -317,10 +317,16 @@ fi
                                               --architecture="${ARCHITECTURE}" \
                                               --nd4jBackend="${ND4J_BACKEND}" \
 
-         if test -f "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${OS}-${PLATFORM}.env"; then
+         if  if [ -z ${ND4J_HELPER} ]; then
              echo "Loading environment for backend ${ND4J_BACKEND}"
              source "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${OS}-${PLATFORM}.env"
+             else
+              if test -f "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${OS}-${PLATFORM}${ND4J_HELPER}.env"; then
+                  echo "Loading environment for backend ${ND4J_BACKEND}"
+                  source "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${OS}-${PLATFORM}${ND4J_HELPER}.env"
+              fi
          fi
+      
         ./kompile build clone-build \
                      --nd4jBackend=${ND4J_BACKEND} \
                      --libnd4jUseLto=${ND4J_USE_LTO} \
