@@ -318,7 +318,7 @@ fi
                                               --architecture="${ARCHITECTURE}" \
                                               --nd4jBackend="${ND4J_BACKEND}" \
 
-         if  if [ -z ${ND4J_HELPER} ]; then
+          if [ -z ${ND4J_HELPER} ]; then
              echo "Loading environment for backend ${ND4J_BACKEND}"
              source "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${OS}-${PLATFORM}.env"
              else
