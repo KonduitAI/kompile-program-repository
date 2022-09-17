@@ -286,6 +286,19 @@ echo "ND4J_USE_LTO ${ND4J_USE_LTO}"
 echo "BUILD_HEAP_SPACE ${BUILD_HEAP_SPACE}"
 echo "ASSEMBLY ${ASSEMBLY}"
 
+function source_backend_end() {
+     if [ -z "${ND4J_HELPER}" ]; then
+                      echo "Loading environment for backend ${ND4J_BACKEND}"
+                      source "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${OS}-${PLATFORM}.env"
+               elif test -f "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${OS}-${PLATFORM}${ND4J_HELPER}.env"; then
+                    echo "Loading environment for backend ${ND4J_BACKEND}"
+                    source "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${OS}-${PLATFORM}${ND4J_HELPER}.env"
+                    else 
+                         echo "No environment found for backend ${ND4J_BACKEND}"
+                fi
+}
+
+
 if [ "${ND4J_BACKEND}"  = "nd4j-native" ]; then
       BUILD_CPU_BACKEND="true"
     else
@@ -318,14 +331,7 @@ fi
                                               --architecture="${ARCHITECTURE}" \
                                               --nd4jBackend="${ND4J_BACKEND}" \
 
-          if [ -z "${ND4J_HELPER}" ]; then
-                    echo "Loading environment for backend ${ND4J_BACKEND}"
-                    source "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${OS}-${PLATFORM}.env"
-             elif test -f "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${OS}-${PLATFORM}${ND4J_HELPER}.env"; then
-                  echo "Loading environment for backend ${ND4J_BACKEND}"
-                  source "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${OS}-${PLATFORM}${ND4J_HELPER}.env"
-              fi
-         
+         source_backend_end
 
         ./kompile build clone-build \
                      --nd4jBackend=${ND4J_BACKEND} \
@@ -422,10 +428,7 @@ fi
                         fi
 
                   elif [ "$ASSEMBLY" == "true" ]; then
-                    if test -f "$USER/.kompile/backend-envs/${ND4J_BACKEND}/${OS}-${PLATFORM}.env"; then
-                                echo "Loading environment for backend ${ND4J_BACKEND}"
-                                source "$USER/.kompile/backend-envs/${ND4J_BACKEND}/${OS}-${PLATFORM}.env"
-                    fi
+                    source_backend_end
                    echo "Building dl4j distribution"
                     echo "Installing Pre requisites for OS ${OS} and architecture ${ARCHITECTURE}"
                     ./kompile install install-requisites --os="${OS}" \
