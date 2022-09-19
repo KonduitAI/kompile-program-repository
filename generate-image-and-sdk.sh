@@ -444,6 +444,7 @@ fi
                                 --dl4jDirectory=${KOMPILE_PREFIX}/deeplearning4j \
                                 --konduitServingDirectory=${KOMPILE_PREFIX}/konduit-serving \
                                 --buildDl4j \
+                                --buildKonduitServing=true \
                                 --platform="${ND4J_CLASSIFIER}" \
                                 --libnd4jClassifier="${ND4J_CLASSIFIER}" \
                                 --nd4jBackend="${ND4J_BACKEND}" \
