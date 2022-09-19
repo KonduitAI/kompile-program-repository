@@ -330,6 +330,7 @@ fi
     BUILD_DIR="$(pwd)"
     if [ "$ASSEMBLY" == "false" ]; then
         ./kompile install install-requisites --os="${OS}" \
+                                             --nd4jClassifier="${ND4J_CLASSIFIER}" \
                                               --architecture="${ARCHITECTURE}" \
                                               --nd4jBackend="${ND4J_BACKEND}" \
 
@@ -433,6 +434,7 @@ fi
                    echo "Building dl4j distribution"
                     echo "Installing Pre requisites for OS ${OS} and architecture ${ARCHITECTURE}"
                     ./kompile install install-requisites --os="${OS}" \
+                                                                 --nd4jClassifier="${ND4J_CLASSIFIER}" \
                                                                  --architecture="${ARCHITECTURE}" \
                                                                  --nd4jBackend="${ND4J_BACKEND}" \
 
