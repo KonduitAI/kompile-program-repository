@@ -17,4 +17,4 @@ sed -i 's|sudo||' /kompile/build_ve_prerequisites.sh
 sed -i 's|../vednn_mergian.patch|/kompile/vednn_mergian.patch|' /kompile/build_ve_prerequisites.sh
 #patch to force the installation of the LLVME
 sed -i 's|isLLVMVE=|isLLVMVE="is not installed" #|' /kompile/build_ve_prerequisites.sh
-RUN cd /kompile && bash build_ve_prerequisites.sh
+cd /kompile && bash build_ve_prerequisites.sh
