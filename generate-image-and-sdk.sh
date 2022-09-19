@@ -345,7 +345,6 @@ fi
                      --buildDl4j \
                      --buildKonduitServing="${ASSEMBLY}" \
                      --libnd4jClassifier="${ND4J_CLASSIFIER}" \
-                       --nd4jBackend="${ND4J_BACKEND}" \
                       --libnd4jHelper="${ND4J_HELPER}" \
                       --libnd4jOperations="${ND4J_OPERATIONS}" \
                       --libnd4jDataTypes="${ND4J_DATATYPES}"
