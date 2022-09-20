@@ -326,7 +326,10 @@ fi
 
       fi
 
-
+      echo "Command pom generate command was ${POM_GENERATE_COMMAND}"
+      eval "./kompile ${POM_GENERATE_COMMAND}"
+      echo "Generated pom contents:"
+      cat "${POM_GENERATE_OUTPUT_PATH}"
     BUILD_DIR="$(pwd)"
     if [ "$ASSEMBLY" == "false" ]; then
         ./kompile install install-requisites --os="${OS}" \
