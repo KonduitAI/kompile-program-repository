@@ -1,5 +1,8 @@
 
 export RELEASE_RPM=/kompile/TSUBASA-soft-release-*.noarch.rpm
+mkdir -p /opt/nec/ve/sbin/
+cp -rf /aurora/*.sh /opt/nec/ve/sbin
+
 cp -rf /aurora/* /kompile
 cp -rf /aurora/TSUBASA-repo.repo /etc/yum.repos.d/
 cp -rf /aurora/TSUBASA-restricted.repo /etc/yum.repos.d/
@@ -10,7 +13,9 @@ cp -rf /kompile/aur_license.conf /opt/nec/aur_license/aur_license.conf
 yum -y  install $RELEASE_RPM
  yum  clean all
 yum clean expire-cache
-yum -y  group install "VE Application Runtime for Container" "VE Application Development"
+TSUBASA_GROUPS="ve-devel ve-infiniband nec-sdk-devel nec-mpi-devel nqsv-execution scatefs-client-tsubasa"
+/opt/nec/ve/sbin/TSUBASA-groups-remark.sh $TSUBASA_GROUPS
+yum group install $TSUBASA_GROUPS
 
 #VEDA/AVEO source build environment
 yum  -y -q install  systemd-devel libsysve-devel.x86_64 glibc-ve-devel kheaders-ve  veos-devel veos-headers libgcc-ve-static.x86_64 aurlic-lib binutils-ve binutils-ve.src
