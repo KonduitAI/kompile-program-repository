@@ -10,7 +10,8 @@ cp -rf /kompile/aur_license.conf /opt/nec/aur_license/aur_license.conf
 yum -y  install $RELEASE_RPM
  yum  clean all
 yum clean expire-cache
- yum -y  group install ve-container nec-sdk-devel
+yum -y  group install "VE Application Runtime for Container" "VE Application Development"
+
 #VEDA/AVEO source build environment
 yum  -y -q install  systemd-devel libsysve-devel.x86_64 glibc-ve-devel kheaders-ve  veos-devel veos-headers libgcc-ve-static.x86_64 aurlic-lib
  yum -y -q install aurlic-lib
