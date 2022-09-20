@@ -1,9 +1,11 @@
+
+export RELEASE_RPM=/kompile/TSUBASA-soft-release-*.noarch.rpm
+cp -rf /aurora/* /kompile
 cp -rf /aurora/TSUBASA-repo.repo /etc/yum.repos.d/
 cp -rf /aurora/TSUBASA-restricted.repo /etc/yum.repos.d/
-export RELEASE_RPM=/aurora/TSUBASA-soft-release-*.noarch.rpm
 mkdir -p /opt/nec/aur_license
-cp -rf   /aurora/license.dat /opt/nec/aur_license/license.dat
-cp -rf /aurora/aur_license.conf /opt/nec/aur_license/aur_license.conf
+cp -rf   /kompile/license.dat /opt/nec/aur_license/license.dat
+cp -rf /kompile/aur_license.conf /opt/nec/aur_license/aur_license.conf
 
 yum -y  install $RELEASE_RPM
  yum  clean all
