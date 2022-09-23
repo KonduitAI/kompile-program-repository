@@ -16,11 +16,10 @@ yum clean expire-cache
 TSUBASA_GROUPS="ve-frontend ve-devel nec-sdk-frontend"
 /opt/nec/ve/sbin/TSUBASA-groups-remark.sh $TSUBASA_GROUPS
 yum group install $TSUBASA_GROUPS
+ln -s /opt/nec/ve/bin/ncc-3.5.1 /opt/nec/ve/bin/nc++
+#VEDA/AVEO source build environment 
+yum  -y install  systemd-devel libsysve-devel.x86_64 glibc-ve-devel kheaders-ve  veos-devel veos-headers nec-veperf-libs.x86_64 libgcc-ve-static.x86_64 aurlic-lib nec-nc++-shared-3.5.1.x86_64 nec-nc++-3.5.1.x86_64 binutils-ve veoffload-aveo veosinfo.x86_64 aurlic-lib
 
-#VEDA/AVEO source build environment
-yum  -y -q install  systemd-devel libsysve-devel.x86_64 glibc-ve-devel kheaders-ve  veos-devel veos-headers libgcc-ve-static.x86_64 aurlic-lib nec-nc++-shared-3.5.1.x86_64 nec-nc++-3.5.1.x86_64 \
-binutils-ve veoffload-aveo veosinfo.x86_64
- yum -y -q install aurlic-lib
 wget https://raw.githubusercontent.com/eclipse/deeplearning4j/master/libnd4j/build_ve_prerequisites.sh -O /kompile/build_ve_prerequisites.sh
 wget https://raw.githubusercontent.com/eclipse/deeplearning4j/master/libnd4j/vednn_mergian.patch -O /kompile/vednn_mergian.patch
 sed -i 's|sudo||' /kompile/build_ve_prerequisites.sh
