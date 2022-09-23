@@ -13,7 +13,7 @@ cp -rf /kompile/aur_license.conf /opt/nec/aur_license/aur_license.conf
 yum -y  install $RELEASE_RPM
  yum  clean all
 yum clean expire-cache
-TSUBASA_GROUPS="ve-frontend ve-devel nec-sdk-frontend nec-mpi-frontend"
+TSUBASA_GROUPS="ve-frontend ve-devel nec-sdk-frontend"
 /opt/nec/ve/sbin/TSUBASA-groups-remark.sh $TSUBASA_GROUPS
 yum group install $TSUBASA_GROUPS
 
