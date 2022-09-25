@@ -180,8 +180,9 @@ __banner Unpacking source code
 # build of gcc.
 
 __untar  "$source_dir"  "$tarfile_dir/$gcc_tarfile"
-echo "Downloading pre requisites in directory /${source_dir}/gcc-${gcc_version}"
-cd  "/${source_dir}/gcc-${gcc_version}" && ./contrib/download-prerequisites
+echo "Downloading pre requisites in directory /${source_dir}/gcc-${GCC_VERSION}"
+bash  "${source_dir}/gcc-${GCC_VERSION}/contrib/download_prerequisites"
+
 
 
 #======================================================================
