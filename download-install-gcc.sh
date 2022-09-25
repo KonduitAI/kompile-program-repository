@@ -58,25 +58,6 @@ tarfile_dir=/var/tmp/$(whoami)/gcc-${gcc_version}_tarballs
 # runtime. Use to indicate who/what/when has built this compiler.
 packageversion="$(whoami)-$(hostname -s)"
 
-# gcc requires that various tools and packages be available for use in the build
-# procedure, including several support libraries are necessary to build gcc. The
-# versions below are close to (or just higher than) the minimum recommended
-# versions.  These libraries will all be built "in-source" with gcc, i.e., they
-# will get unzipped into the gcc source code and get build along with gcc.
-
-# gcc-9 can use GMP 6.1.0 (as seen in the gcc infrastructure ftp site), so take
-# highest patch version of 6.1.x
-gmp_version=$GMP_VERSION
-
-# gcc-9 still using and old version of MPFR.  Attempting to use later versions
-# causes compile error.
-mpfr_version=$MPFR_VERSION
-
-# gcc-9 is able to use latest MPC version, as of mid 2019.
-mpc_version=$MPC_VERSION
-
-# gcc-9 can use ISL 0.18 (as seen in the gcc infrastructure ftp site)
-isl_version=$ISL_VERSION
 
 #======================================================================
 # Support functions
@@ -184,13 +165,7 @@ gcc_tarfile=gcc-${gcc_version}.tar.gz
 
 __wget ftp://ftp.gnu.org/gnu/gcc/gcc-${gcc_version} $gcc_tarfile
 
-# Check tarfiles are found, if not found, dont proceed
-for f in $$gcc_tarfile
-do
-    if [ ! -f "$tarfile_dir/$f" ]; then
-        __die tarfile not found: $tarfile_dir/$f
-    fi
-done
+
 
 
 #======================================================================
