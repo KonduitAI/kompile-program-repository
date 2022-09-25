@@ -20,6 +20,10 @@ case $key in
             # unknown option
     ;;
 esac
+if [[ $# -gt 0 ]]; then
+    shift # past argument or value
+fi
+done
 
 #======================================================================
 # User configuration
