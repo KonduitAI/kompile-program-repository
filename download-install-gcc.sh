@@ -180,7 +180,7 @@ __banner Unpacking source code
 # build of gcc.
 
 __untar  "$source_dir"  "$tarfile_dir/$gcc_tarfile"
-cd  "$tarfile_dir/$gcc_tarfile" && ./contrib/download-prerequisites
+cd  "${source_dir}/gcc-${gcc_version}" && ./contrib/download-prerequisites
 
 
 #======================================================================
