@@ -7,11 +7,6 @@
 # This gcc build script is free software; you can redistribute it and/or modify
 # it under the terms of the MIT license.
 GCC_VERSION=
-GMP_VERSION=
-MPR_VERSION=
-MPFR_VERSION=
-MPC_VERSION=
-ISL_VERSION=
 while [[ $# -gt 0 ]]
 do
 key="$1"
@@ -21,26 +16,6 @@ case $key in
     GCC_VERSION="$value"
     shift # past argument
     ;;
-    -gmp|--gmp-version)
-      GMP_VERSION="$value"
-      shift # past argument
-      ;;
-       -mpr|--mpr-version)
-          MPR_VERSION="$value"
-          shift # past argument
-          ;;
-    -mpfr|--mpfr-version)
-    MPFR_VERSION="$value"
-    shift # past argument
-    ;;
-     -mpc|--mpc-version)
-      MPC_VERSION="$value"
-      shift # past argument
-      ;;
-     -isl|--isl-version)
-        ISL_VERSION="$value"
-        shift # past argument
-      ;;
     *)
             # unknown option
     ;;
