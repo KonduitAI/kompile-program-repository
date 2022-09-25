@@ -201,20 +201,12 @@ done
 
 __banner Downloading source code
 
-gmp_tarfile=gmp-${gmp_version}.tar.bz2
-mpfr_tarfile=mpfr-${mpfr_version}.tar.bz2
-mpc_tarfile=mpc-${mpc_version}.tar.gz
-isl_tarfile=isl-${isl_version}.tar.bz2
 gcc_tarfile=gcc-${gcc_version}.tar.gz
 
-__wget https://gmplib.org/download/gmp              $gmp_tarfile
-__wget https://ftp.gnu.org/gnu/mpfr                 $mpfr_tarfile
-__wget http://www.multiprecision.org/downloads      $mpc_tarfile
-__wget ftp://gcc.gnu.org/pub/gcc/infrastructure     $isl_tarfile
 __wget ftp://ftp.gnu.org/gnu/gcc/gcc-${gcc_version} $gcc_tarfile
 
 # Check tarfiles are found, if not found, dont proceed
-for f in $gmp_tarfile $mpfr_tarfile $mpc_tarfile $isl_tarfile $gcc_tarfile
+for f in $$gcc_tarfile
 do
     if [ ! -f "$tarfile_dir/$f" ]; then
         __die tarfile not found: $tarfile_dir/$f
@@ -234,18 +226,7 @@ __banner Unpacking source code
 # build of gcc.
 
 __untar  "$source_dir"  "$tarfile_dir/$gcc_tarfile"
-
-__untar  "$source_dir/gcc-${gcc_version}"  "$tarfile_dir/$mpfr_tarfile"
-mv -v $source_dir/gcc-${gcc_version}/mpfr-${mpfr_version} $source_dir/gcc-${gcc_version}/mpfr
-
-__untar  "$source_dir/gcc-${gcc_version}"  "$tarfile_dir/$mpc_tarfile"
-mv -v $source_dir/gcc-${gcc_version}/mpc-${mpc_version} $source_dir/gcc-${gcc_version}/mpc
-
-__untar "$source_dir/gcc-${gcc_version}"  "$tarfile_dir/$gmp_tarfile"
-mv -v $source_dir/gcc-${gcc_version}/gmp-${gmp_version} $source_dir/gcc-${gcc_version}/gmp
-
-__untar "$source_dir/gcc-${gcc_version}"  "$tarfile_dir/$isl_tarfile"
-mv -v $source_dir/gcc-${gcc_version}/isl-${isl_version} $source_dir/gcc-${gcc_version}/isl
+cd  "$tarfile_dir/$gcc_tarfile" && ./contrib/download-prerequisites
 
 
 #======================================================================
