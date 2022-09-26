@@ -30,5 +30,7 @@ sed -i 's|../vednn_mergian.patch|/kompile/vednn_mergian.patch|' /kompile/build_v
 #patch to force the installation of the LLVME
 sed -i 's|isLLVMVE=|isLLVMVE="is not installed" #|' /kompile/build_ve_prerequisites.sh
 export VEDNN_ROOT=/kompile/vednn_lib/
-cp -rf /usr/local/veda/include/* ${VEDNN_ROOT}/include
+cp -rf /kompile/aurora/veda/src/*.h ${VEDNN_ROOT}/include
+cp -rf /kompile/aurora/veda/src/*ve/.h ${VEDNN_ROOT}/include
+
 cd /kompile && bash build_ve_prerequisites.sh
