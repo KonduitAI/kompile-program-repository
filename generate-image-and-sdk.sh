@@ -41,6 +41,7 @@ BUILD_PLATFORM=
 BINARY_EXTENSION=
 ND4J_BACKEND="nd4j-native"
 ND4J_CLASSIFIER=
+ND4J_EXTENSION=
 ND4J_HELPER=
 ND4J_DATATYPES=
 ND4J_OPERATIONS=
@@ -84,6 +85,10 @@ case $key in
     ;;
      -dt|--nd4j-datatypes)
       ND4J_DATATYPES="$value"
+      shift # past argument
+      ;;
+        -ext|--nd4j-extension)
+      ND4J_EXTENSION="$value"
       shift # past argument
       ;;
      -s|--server)
@@ -270,6 +275,7 @@ echo "MAVEN_HOME ${MAVEN_HOME}"
 echo "BUILD_PLATFORM ${BUILD_PLATFORM}"
 echo "BINARY_EXTENSION ${BINARY_EXTENSION}"
 echo "ND4J_BACKEND ${ND4J_BACKEND}"
+echo "ND4J_EXTENSION ${ND4J_EXTENSION}"
 echo "ND4J_HELPER ${ND4J_HELPER}"
 echo "ND4J_CLASSIFIER ${ND4J_CLASSIFIER}"
 echo "ENABLE_JETSON_NANO ${ENABLE_JETSON_NANO}"
@@ -348,6 +354,7 @@ fi
                      --konduitServingDirectory=${KOMPILE_PREFIX}/konduit-serving \
                      --buildDl4j \
                      --buildKonduitServing \
+                     --libnd4jExtension="${ND4J_EXTENSION}" \
                      --libnd4jClassifier="${ND4J_CLASSIFIER}" \
                       --libnd4jHelper="${ND4J_HELPER}" \
                       --libnd4jOperations="${ND4J_OPERATIONS}" \
