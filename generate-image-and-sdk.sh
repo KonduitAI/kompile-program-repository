@@ -61,6 +61,8 @@ IS_SERVER="false"
 DL4J_BRANCH="master"
 KONDUIT_SERVING_BRANCH="master"
 BUILD_HEAP_SPACE=
+GCC=
+GLIBC=
 
 while [[ $# -gt 0 ]]
 do
@@ -96,6 +98,14 @@ case $key in
         shift # past argument
       ;;
       -op|--nd4j-operations)
+        ND4J_OPERATIONS="$value"
+        shift # past argument
+      ;;
+        -gcc|--gcc-path)
+        IS_SERVER="$value"
+        shift # past argument
+      ;;
+      -glibc|--glibc-path)
         ND4J_OPERATIONS="$value"
         shift # past argument
       ;;
@@ -291,6 +301,8 @@ echo "KONDUIT_SERVING_BRANCH ${KONDUIT_SERVING_BRANCH}"
 echo "ND4J_USE_LTO ${ND4J_USE_LTO}"
 echo "BUILD_HEAP_SPACE ${BUILD_HEAP_SPACE}"
 echo "ASSEMBLY ${ASSEMBLY}"
+echo "GCC ${GCC}"
+echo "GLIBC ${GLIBC}"
 
 function source_backend_end() {
      if [ -z "${ND4J_HELPER}" ]; then
@@ -305,6 +317,22 @@ function source_backend_end() {
      fi
     fi
 }
+
+if [ ! -z "$GCC" -a "$GCC" != "" ]; then
+        echo "Setting custom GCC"
+        ./kompile install install-tool --programName="${GCC}"
+        export CC="$HOME/.kompile/${GCC}/bin/gcc"
+        export CXX="$HOME/.kompile/${GCC}/bin/g++"
+        export LD_LIBRARY_PATH="$HOME/.kompile/${GCC}/lib64:$LD_LIBRARY_PATH"
+         export PATH="$HOME/.kompile/${GCC}/bin:$PATH"
+fi
+
+if [ ! -z "$GLIBC" -a "$GLIBC" != "" ]; then
+        echo "Setting custom GLIBC"
+        ./kompile install install-tool --programName="${GLIBC}"
+        export PATH="$HOME/.kompile/${GLIBC}/bin:$PATH"
+        export LD_LIBRARY_PATH="$HOME/.kompile/${GLIBC}/lib64:$LD_LIBRARY_PATH"
+fi
 
 
 if [ "${ND4J_BACKEND}"  = "nd4j-native" ]; then
