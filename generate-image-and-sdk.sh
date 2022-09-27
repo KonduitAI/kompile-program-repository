@@ -101,11 +101,11 @@ case $key in
         ND4J_OPERATIONS="$value"
         shift # past argument
       ;;
-        -gcc|--gcc-path)
+        -gcc|--gcc)
         IS_SERVER="$value"
         shift # past argument
       ;;
-      -glibc|--glibc-path)
+      -glibc|--glibc)
         ND4J_OPERATIONS="$value"
         shift # past argument
       ;;
