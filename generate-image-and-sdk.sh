@@ -323,9 +323,9 @@ if [ ! -z "$GCC" -a "$GCC" != "" ]; then
         ./kompile install install-tool --programName="${GCC}"
         export CC="$HOME/.kompile/${GCC}/bin/gcc"
         export CXX="$HOME/.kompile/${GCC}/bin/g++"
-        if [ -z "$LD_LIBRARY_PATH" ] then
+        if [ -z "$LD_LIBRARY_PATH" ]; then
               export LD_LIBRARY_PATH="$HOME/.kompile/${GCC}/lib64" 
-       else
+           else
              export LD_LIBRARY_PATH="$HOME/.kompile/${GCC}/lib64:$LD_LIBRARY_PATH"
         fi
        
@@ -336,7 +336,7 @@ if [ ! -z "$GLIBC" -a "$GLIBC" != "" ]; then
         echo "Setting custom GLIBC"
         ./kompile install install-tool --programName="${GLIBC}"
         export PATH="$HOME/.kompile/${GLIBC}/bin:$PATH"
-        if [ -z "$LD_LIBRARY_PATH" ] then
+        if [ -z "$LD_LIBRARY_PATH" ]; then
               export LD_LIBRARY_PATH="$HOME/.kompile/${GLIBC}/lib64" 
        else
              export LD_LIBRARY_PATH="$HOME/.kompile/${GLIBC}/lib64:$LD_LIBRARY_PATH"
