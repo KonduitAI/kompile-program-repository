@@ -318,31 +318,6 @@ function source_backend_end() {
     fi
 }
 
-if [ ! -z "$GCC" -a "$GCC" != "" ]; then
-        echo "Setting custom GCC"
-        ./kompile install install-tool --programName="${GCC}"
-        export CC="$HOME/.kompile/${GCC}/bin/gcc"
-        export CXX="$HOME/.kompile/${GCC}/bin/g++"
-        if [ -z "${LD_LIBRARY_PATH-}" ]; then
-              export LD_LIBRARY_PATH="$HOME/.kompile/${GCC}/lib64" 
-           else
-             export LD_LIBRARY_PATH="$HOME/.kompile/${GCC}/lib64:$LD_LIBRARY_PATH"
-        fi
-       
-        export PATH="$HOME/.kompile/${GCC}/bin:$PATH"
-fi
-
-if [ ! -z "$GLIBC" -a "$GLIBC" != "" ]; then
-        echo "Setting custom GLIBC"
-        ./kompile install install-tool --programName="${GLIBC}"
-        export PATH="$HOME/.kompile/${GLIBC}/bin:$PATH"
-        if [ -z "${LD_LIBRARY_PATH-}" ]; then
-              export LD_LIBRARY_PATH="$HOME/.kompile/${GLIBC}/lib64" 
-       else
-             export LD_LIBRARY_PATH="$HOME/.kompile/${GLIBC}/lib64:$LD_LIBRARY_PATH"
-        fi
-        
-fi
 
 
 if [ "${ND4J_BACKEND}"  = "nd4j-native" ]; then
@@ -384,6 +359,8 @@ fi
          source_backend_end
 
         ./kompile build clone-build \
+                     --gcc=${GCC} \
+                     --glibc=${GLIBC} \
                      --nd4jBackend=${ND4J_BACKEND} \
                      --libnd4jUseLto=${ND4J_USE_LTO} \
                      --dl4jBranchName=${DL4J_BRANCH} \
@@ -487,6 +464,8 @@ fi
                                                                  --nd4jBackend="${ND4J_BACKEND}" \
 
                    ./kompile build clone-build \
+                                 --gcc=${GCC} \
+                                --glibc=${GLIBC} \
                                 --libnd4jUseLto=${ND4J_USE_LTO} \
                                 --dl4jBranchName=${DL4J_BRANCH} \
                                 --dl4jDirectory=${KOMPILE_PREFIX}/deeplearning4j \
