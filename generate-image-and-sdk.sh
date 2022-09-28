@@ -102,11 +102,11 @@ case $key in
         shift # past argument
       ;;
         -gcc|--gcc)
-        IS_SERVER="$value"
+        GCC="$value"
         shift # past argument
       ;;
       -glibc|--glibc)
-        ND4J_OPERATIONS="$value"
+        GLIBC="$value"
         shift # past argument
       ;;
     -py|-python-sdk|--python-sdk)
