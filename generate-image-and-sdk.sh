@@ -270,7 +270,15 @@ set_binary_extension
 # Set this for cmake environment so it automatically detects needed variables
 export LIB_OUTPUT_PATH
 export INCLUDE_PATH
+if [ ! -z "$GCC" -a "$GCC" != "" ]; then
+        echo "Setting custom GCC"
+        ./kompile install install-tool --programName="${GCC}"
+fi
 
+if [ ! -z "$GLIBC" -a "$GLIBC" != "" ]; then
+        echo "Setting custom GLIBC"
+        ./kompile install install-tool --programName="${GLIBC}"
+fi
 
 echo "PIPELINE_FILE ${PIPELINE_FILE}"
 echo "KOMPILE_PYTHON_PATH= ${KOMPILE_PYTHON_PATH}"
