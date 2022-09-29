@@ -63,6 +63,7 @@ KONDUIT_SERVING_BRANCH="master"
 BUILD_HEAP_SPACE=
 GCC=
 GLIBC=
+BUILD_THREADS=
 
 while [[ $# -gt 0 ]]
 do
@@ -144,6 +145,10 @@ case $key in
     -lto|--use-lto)
       ND4J_USE_LTO="$value"
       shift # past argument
+    ;;
+      -build-threads|--build-threads)
+    BUILD_THREADS="$value"
+    shift # past argument
     ;;
      -nb|--nd4j-backend)
     ND4J_BACKEND="$value"
@@ -314,7 +319,7 @@ echo "BUILD_HEAP_SPACE ${BUILD_HEAP_SPACE}"
 echo "ASSEMBLY ${ASSEMBLY}"
 echo "GCC ${GCC}"
 echo "GLIBC ${GLIBC}"
-
+echo "BUILD_THREADS ${BUILD_THREADS}"
 function source_backend_end() {
      if [ -z "${ND4J_HELPER}" ]; then
            if test -f "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${ND4J_CLASSIFIER}.env"; then
@@ -370,6 +375,7 @@ fi
          source_backend_end
 
         ./kompile build clone-build \
+                     --libnd4jBuildThreads=${BUILD_THREADS} \
                      --gcc=${GCC} \
                      --glibc=${GLIBC} \
                      --nd4jBackend=${ND4J_BACKEND} \
@@ -475,6 +481,7 @@ fi
                                                                  --nd4jBackend="${ND4J_BACKEND}" \
 
                    ./kompile build clone-build \
+                               --libnd4jBuildThreads=${BUILD_THREADS} \
                                  --gcc=${GCC} \
                                 --glibc=${GLIBC} \
                                 --libnd4jUseLto=${ND4J_USE_LTO} \
