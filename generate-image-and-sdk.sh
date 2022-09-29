@@ -373,6 +373,26 @@ fi
                                               --nd4jBackend="${ND4J_BACKEND}" \
 
          source_backend_end
+          if [ ! -z "$ND4J_EXTENSION" ] || [ "${ND4J_EXTENSION}" != "" ] || [ ! -z "$ND4J_HELPER" ] || [ "${ND4J_HELPER}" != "" ]; then
+             echo "Non default extensionor helper  specified. In order to use this extension, the default build for the platform is also needed."
+           ./kompile build clone-build \
+                     --libnd4jBuildThreads=${BUILD_THREADS} \
+                     --gcc=${GCC} \
+                     --glibc=${GLIBC} \
+                     --nd4jBackend=${ND4J_BACKEND} \
+                     --libnd4jUseLto=${ND4J_USE_LTO} \
+                     --dl4jBranchName=${DL4J_BRANCH} \
+                     --konduitServingBranchName=${KONDUIT_SERVING_BRANCH} \
+                     --dl4jDirectory=${KOMPILE_PREFIX}/deeplearning4j \
+                     --konduitServingDirectory=${KOMPILE_PREFIX}/konduit-serving \
+                     --buildDl4j \
+                     --buildKonduitServing \
+                     --libnd4jExtension="${ND4J_EXTENSION}" \
+                     --libnd4jClassifier="${ND4J_CLASSIFIER}" \
+                      --libnd4jHelper="${ND4J_HELPER}" \
+                      --libnd4jOperations="${ND4J_OPERATIONS}" \
+                      --libnd4jDataTypes="${ND4J_DATATYPES}"
+         fi
 
         ./kompile build clone-build \
                      --libnd4jBuildThreads=${BUILD_THREADS} \
@@ -480,6 +500,23 @@ fi
                                                                  --architecture="${ARCHITECTURE}" \
                                                                  --nd4jBackend="${ND4J_BACKEND}" \
 
+                    if [ ! -z "$ND4J_EXTENSION" ] || [ "${ND4J_EXTENSION}" != "" ] || [ ! -z "$ND4J_HELPER" ] || [ "${ND4J_HELPER}" != "" ]; then
+                          echo "Non default extensionor helper  specified. In order to use this extension, the default build for the platform is also needed."          
+                       ./kompile build clone-build \
+                               --libnd4jBuildThreads=${BUILD_THREADS} \
+                                 --gcc=${GCC} \
+                                --glibc=${GLIBC} \
+                                --libnd4jUseLto=${ND4J_USE_LTO} \
+                                --dl4jBranchName=${DL4J_BRANCH} \
+                                --dl4jDirectory=${KOMPILE_PREFIX}/deeplearning4j \
+                                --konduitServingDirectory=${KOMPILE_PREFIX}/konduit-serving \
+                                --buildDl4j \
+                                --platform="${ND4J_CLASSIFIER}" \
+                                --libnd4jClassifier="${ND4J_CLASSIFIER}" \
+                                 --libnd4jOperations="${ND4J_OPERATIONS}" \
+                                 --libnd4jDataTypes="${ND4J_DATATYPES}"
+                    fi
+                   
                    ./kompile build clone-build \
                                --libnd4jBuildThreads=${BUILD_THREADS} \
                                  --gcc=${GCC} \
