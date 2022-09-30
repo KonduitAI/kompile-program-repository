@@ -379,7 +379,8 @@ fi
                                               --nd4jBackend="${ND4J_BACKEND}" \
 
          source_backend_end
-          if [ ! -z "$ND4J_EXTENSION" ] || [ "${ND4J_EXTENSION}" != "" ] || [ ! -z "$ND4J_HELPER" ] || [ "${ND4J_HELPER}" != "" ]; then
+          # check if the backend already exists, if so don't rebuild default
+          if [ ! -z "$ND4J_EXTENSION" ] || [ "${ND4J_EXTENSION}" != "" ] || [ ! -z "$ND4J_HELPER" ] || [ "${ND4J_HELPER}" != "" ] && [ ! -f "$HOME/.m2/repository/org/nd4j/${ND4J_BACKEND}/1.0.0-SNAPSHOT/${ND4J_BACKEND}-1.0.0-SNAPSHOT.jar" ] ; then
              echo "Non default extension or helper  specified. In order to use this extension, the default build for the platform is also needed."
            ./kompile build clone-build \
                      --libnd4jBuildThreads=${BUILD_THREADS} \
