@@ -388,7 +388,6 @@ fi
                      --buildDl4j \
                      --buildKonduitServing \
                      --libnd4jExtension="${ND4J_EXTENSION}" \
-                     --libnd4jClassifier="${ND4J_CLASSIFIER}" \
                       --libnd4jHelper="${ND4J_HELPER}" \
                       --libnd4jOperations="${ND4J_OPERATIONS}" \
                       --libnd4jDataTypes="${ND4J_DATATYPES}"
@@ -407,7 +406,6 @@ fi
                      --buildDl4j \
                      --buildKonduitServing \
                      --libnd4jExtension="${ND4J_EXTENSION}" \
-                     --libnd4jClassifier="${ND4J_CLASSIFIER}" \
                       --libnd4jHelper="${ND4J_HELPER}" \
                       --libnd4jOperations="${ND4J_OPERATIONS}" \
                       --libnd4jDataTypes="${ND4J_DATATYPES}"
