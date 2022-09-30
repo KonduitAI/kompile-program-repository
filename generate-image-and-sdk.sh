@@ -236,9 +236,15 @@ fi
         BUILD_PLATFORM="${ND4J_CLASSIFIER}"
         IFS=- read -r OS ARCHITECTURE <<< "${ND4J_CLASSIFIER}"
         ARCHITECTURE="${ARCHITECTURE/-onednn/}"
+         ARCHITECTURE="${ARCHITECTURE/-vednn/}"
         ARCHITECTURE="${ARCHITECTURE/-avx2/}"
         ARCHITECTURE="${ARCHITECTURE/-avx512/}"
         ARCHITECTURE="${ARCHITECTURE/-cudnn/}"
+         OS="${OS/-onednn/}"
+         OS="${OS/-vednn/}"
+        OS="${OS/-avx2/}"
+        OS="${OS/-avx512/}"
+        OS="${OS/-cudnn/}"
         echo "READ ARCHITECTURE AND OS AS ${OS} ${ARCHITECTURE}"
 fi
 
