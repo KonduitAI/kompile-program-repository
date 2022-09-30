@@ -340,7 +340,10 @@ function source_backend_end() {
     fi
 }
 
-
+# needed for aurora backend
+if [[ "$ND4J_HELPER" == *"aurora"* ]]; then
+     export VEDNN_ROOT=/kompile/vednn_lib
+fi
 
 if [ "${ND4J_BACKEND}"  = "nd4j-native" ]; then
       BUILD_CPU_BACKEND="true"
