@@ -356,7 +356,7 @@ function source_backend_end() {
 }
 
 # needed for aurora backend
-if [[ "$ND4J_HELPER" == *"aurora"* ]]; then
+if [[ "$ND4J_HELPER" == *"vednn"* ]]; then
      export VEDNN_ROOT=/kompile/vednn_lib
 fi
 
