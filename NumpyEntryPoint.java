@@ -50,18 +50,9 @@ public class NumpyEntryPoint {
 
         @Override
         public List<String> getHeaderFiles() {
-            /*
-             * The header file with the C declarations that are imported. We use a helper class that
-             * locates the file in our project structure.
-             */
-            try {
-                File headers = headersDir();
-                return Collections.singletonList("\"" + headers().getAbsolutePath() + "/numpy_struct.h"  + "\"");
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
+                File kompileDir = new File(System.getProperty("user.home"),".kompile");
+                File headersDir = new File(kompileDir,"headers");
+                return Collections.singletonList("\"" + headersDir.getAbsolutePath() + "/numpy_struct.h"  + "\"");
     }
 
 
