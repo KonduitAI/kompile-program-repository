@@ -246,23 +246,8 @@ fi
         OS="${OS/-avx512/}"
         OS="${OS/-cudnn/}"
         echo "READ ARCHITECTURE AND OS AS ${OS} ${ARCHITECTURE}"
+        ND4J_CLASSIFIER=$(./kompile helper classifier-helper architecture=${ARCHITECTURE} --helper=${ND4J_HELPER} --OS=${OS} --extension=${ND4J_EXTENSION})
 fi
-
-  if [ ! -z "$ND4J_EXTENSION" ] && [ "${ND4J_EXTENSION}" != "" ] && [ ! -z "$ND4J_HELPER" ] && [ "${ND4J_HELPER}" != "" ]; then
-          ND4J_CLASSIFIER="${OS}-${ARCHITECTURE}-${ND4J_HELPER}-${ND4J_EXTENSION}"
-
-fi
-
-
-  if [ ! -z "$ND4J_EXTENSION" ] && [ "${ND4J_EXTENSION}" != "" ]; then
-          ND4J_CLASSIFIER="${OS}-${ARCHITECTURE}-${ND4J_EXTENSION}"
-
-  fi
-  
-   if [ ! -z "$ND4J_HELPER" ] && [ "${ND4J_HELPER}" != "" ]; then
-          ND4J_CLASSIFIER="${OS}-${ARCHITECTURE}-${ND4J_HELPER}"
-
-  fi
 
 }
 
