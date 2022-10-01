@@ -454,7 +454,7 @@ fi
                              echo "Set real include path to ${REAL_INCLUDE_PATH}"
                              cd "${BUILD_DIR}"
                              cp "${KOMPILE_PREFIX}/${IMAGE_NAME}/target/"*.h "${INCLUDE_PATH}"
-                             cp "${KOMPILE_PREFIX}/src/main/resources/numpy_struct.h" "${INCLUDE_PATH}"
+                             cp "${HOME}/.kompile/headers/numpy_struct.h" "${INCLUDE_PATH}"
                              cp "${KOMPILE_PREFIX}/${IMAGE_NAME}/target/"*.${BINARY_EXTENSION} "${LIB_OUTPUT_PATH}"
                              # Sometimes CMakeCache.txt maybe present. Remove it before copying to ensure a build proceeds.
                              if  test -f "${KOMPILE_PREFIX}/${KOMPILE_C_PATH}/CMakeCache.txt" ; then
