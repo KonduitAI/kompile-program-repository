@@ -246,7 +246,7 @@ fi
         OS="${OS/-avx512/}"
         OS="${OS/-cudnn/}"
         echo "READ ARCHITECTURE AND OS AS ${OS} ${ARCHITECTURE}"
-        ND4J_CLASSIFIER=$(./kompile helper classifier-helper architecture=${ARCHITECTURE} --helper=${ND4J_HELPER} --os=${OS} --extension=${ND4J_EXTENSION})
+        ND4J_CLASSIFIER=$(./kompile helper classifier-helper --architecture=${ARCHITECTURE} --helper=${ND4J_HELPER} --os=${OS} --extension=${ND4J_EXTENSION})
 fi
 
 }
