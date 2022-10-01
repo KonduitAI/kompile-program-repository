@@ -248,6 +248,21 @@ fi
         echo "READ ARCHITECTURE AND OS AS ${OS} ${ARCHITECTURE}"
 fi
 
+  if [ ! -z "$ND4J_EXTENSION" ] && [ "${ND4J_EXTENSION}" != "" ] && [ ! -z "$ND4J_HELPER" ] && [ "${ND4J_HELPER}" != "" ]; then
+          ND4J_CLASSIFIER="${OS}-${ARCHITECTURE}-${ND4J_HELPER}-${ND4J_EXTENSION}"
+
+fi
+
+
+  if [ ! -z "$ND4J_EXTENSION" ] && [ "${ND4J_EXTENSION}" != "" ]; then
+          ND4J_CLASSIFIER="${OS}-${ARCHITECTURE}-${ND4J_EXTENSION}"
+
+  fi
+  
+   if [ ! -z "$ND4J_HELPER" ] && [ "${ND4J_HELPER}" != "" ]; then
+          ND4J_CLASSIFIER="${OS}-${ARCHITECTURE}-${ND4J_HELPER}"
+
+  fi
 
 }
 
@@ -344,6 +359,8 @@ function source_backend_end() {
 if [[ "$ND4J_HELPER" == *"aurora"* ]]; then
      export VEDNN_ROOT=/kompile/vednn_lib
 fi
+
+
 
 if [ "${ND4J_BACKEND}"  = "nd4j-native" ]; then
       BUILD_CPU_BACKEND="true"
