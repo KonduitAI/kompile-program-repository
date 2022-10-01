@@ -38,6 +38,8 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import ai.konduit.pipelinegenerator.main.install.InstallHeaders;
+
 
 @CContext(NumpyEntryPoint.NumpyEntryPointDirectives.class)
 public class NumpyEntryPoint {
@@ -53,7 +55,8 @@ public class NumpyEntryPoint {
              * locates the file in our project structure.
              */
             try {
-                return Collections.singletonList("\"" + new ClassPathResource("numpy_struct.h").getFile().getAbsolutePath() + "\"");
+                File headers = headersDir();
+                return Collections.singletonList("\"" + headers().getAbsolutePath() + "/numpy_struct.h"  + "\"");
             } catch (IOException e) {
                 e.printStackTrace();
                 return null;
