@@ -38,7 +38,6 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-import ai.konduit.pipelinegenerator.main.install.InstallHeaders;
 
 
 @CContext(NumpyEntryPoint.NumpyEntryPointDirectives.class)
