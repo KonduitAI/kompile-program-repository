@@ -54,7 +54,7 @@ public class NumpyEntryPoint {
                 File headersDir = new File(kompileDir,"headers");
                 return Collections.singletonList("\"" + headersDir.getAbsolutePath() + "/numpy_struct.h"  + "\"");
     }
-
+    }
 
     @CStruct("numpy_struct")
     interface NumpyStruct extends PointerBase {
