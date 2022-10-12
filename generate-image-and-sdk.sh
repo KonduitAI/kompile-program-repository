@@ -377,6 +377,18 @@ fi
       echo "Generated pom contents:"
       cat "${POM_GENERATE_OUTPUT_PATH}"
     BUILD_DIR="$(pwd)"
+    if [[ ! -d "${KOMPILE_PREFIX}/deeplearning4j" ]]; then
+       BUILD_DL4J="true"
+       else 
+           echo "DL4J directory already exists. Skipping build. Delete the dl4j install at ${KOMPILE_PREFIX/deeplearning4j} if you want to build dl4j."
+           BUILD_DL4J="false"
+    fi
+    if [[ ! -d "${KOMPILE_PREFIX}/konduit-serving" ]]; then
+         BUILD_KONDUIT_SERVING="true"
+         else 
+             echo "Konduit Serving directory already exists. Skipping build. Delete the dl4j install at ${KOMPILE_PREFIX/konduit-serving} if you want to build konduit serving."
+             BUILD_KONDUIT_SERVING="false"
+    fi
     if [ "$ASSEMBLY" == "false" ]; then
         ./kompile install install-requisites --os="${OS}" \
                                              --nd4jHelper="${ND4J_HELPER}" \
@@ -397,8 +409,8 @@ fi
                      --konduitServingBranchName=${KONDUIT_SERVING_BRANCH} \
                      --dl4jDirectory=${KOMPILE_PREFIX}/deeplearning4j \
                      --konduitServingDirectory=${KOMPILE_PREFIX}/konduit-serving \
-                     --buildDl4j \
-                     --buildKonduitServing \
+                     --buildDl4j=${BUILD_DL4J} \
+                     --buildKonduitServing=${BUILD_KONDUIT_SERVING} \
                       --libnd4jOperations="${ND4J_OPERATIONS}" \
                       --libnd4jDataTypes="${ND4J_DATATYPES}"
          fi
@@ -413,8 +425,8 @@ fi
                      --konduitServingBranchName=${KONDUIT_SERVING_BRANCH} \
                      --dl4jDirectory=${KOMPILE_PREFIX}/deeplearning4j \
                      --konduitServingDirectory=${KOMPILE_PREFIX}/konduit-serving \
-                     --buildDl4j \
-                     --buildKonduitServing \
+                     --buildDl4j=${BUILD_DL4J} \
+                     --buildKonduitServing=${BUILD_KONDUIT_SERVING} \
                      --libnd4jExtension="${ND4J_EXTENSION}" \
                       --libnd4jHelper="${ND4J_HELPER}" \
                       --libnd4jOperations="${ND4J_OPERATIONS}" \
@@ -517,8 +529,7 @@ fi
                                 --libnd4jUseLto=${ND4J_USE_LTO} \
                                 --dl4jBranchName=${DL4J_BRANCH} \
                                 --dl4jDirectory=${KOMPILE_PREFIX}/deeplearning4j \
-                                --konduitServingDirectory=${KOMPILE_PREFIX}/konduit-serving \
-                                --buildDl4j \
+                                --buildDl4j=${BUILD_DL4J} \
                                 --platform="${ND4J_CLASSIFIER}" \
                                  --libnd4jOperations="${ND4J_OPERATIONS}" \
                                  --libnd4jDataTypes="${ND4J_DATATYPES}"
@@ -531,8 +542,7 @@ fi
                                 --libnd4jUseLto=${ND4J_USE_LTO} \
                                 --dl4jBranchName=${DL4J_BRANCH} \
                                 --dl4jDirectory=${KOMPILE_PREFIX}/deeplearning4j \
-                                --konduitServingDirectory=${KOMPILE_PREFIX}/konduit-serving \
-                                --buildDl4j \
+                                --buildDl4j=${BUILD_DL4J} \
                                  --libnd4jExtension="${ND4J_EXTENSION}" \
                                 --platform="${ND4J_CLASSIFIER}" \
                                 --libnd4jClassifier="${ND4J_CLASSIFIER}" \
