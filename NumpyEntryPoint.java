@@ -200,6 +200,7 @@ public class NumpyEntryPoint {
         try {
             String pipelinePath2 = CTypeConversion.toJavaString(pipelinePath);
             System.setProperty("pipeline.path",pipelinePath2);
+            System.setProperty("org.bytedeco.javacpp.logger.debug","true");
             System.setProperty("org.eclipse.python4j.numpyimport", "false");
             System.setProperty("org.eclipse.python4j.release_gil_automatically", "false");
             System.out.println("Disabling automatic gil release");
