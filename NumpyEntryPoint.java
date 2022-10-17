@@ -201,14 +201,20 @@ public class NumpyEntryPoint {
             String pipelinePath2 = CTypeConversion.toJavaString(pipelinePath);
             System.setProperty("pipeline.path",pipelinePath2);
             System.setProperty("org.eclipse.python4j.numpyimport", "false");
-
-
-
-
-
             System.setProperty("org.eclipse.python4j.release_gil_automatically", "false");
             System.out.println("Disabling automatic gil release");
             System.setProperty("org.eclipse.python4j.path.append", "none");
+            if(System.getenv().contains("KOMPILE_PROPERTIES")) {
+                File kompileProperties = new File(System.getenv("KOMPILE_PROPERTIES"));
+                System.out.println("Loading properties from " + System.getenv("KOMPILE_PROPERTIES"));
+                Properties properties = new Properties();
+                FileInputStream fileInputStream = new FileInputStream(kompileProperties);
+                properties.load(fileInputStream);
+                System.getProperties().putAll(properties);
+                
+            }
+            
+            
             Holder.init();
 
 
