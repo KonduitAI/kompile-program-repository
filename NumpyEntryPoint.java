@@ -203,7 +203,7 @@ public class NumpyEntryPoint {
             System.setProperty("org.eclipse.python4j.release_gil_automatically", "false");
             System.out.println("Disabling automatic gil release");
             System.setProperty("org.eclipse.python4j.path.append", "none");
-            if(System.getenv().contains("KOMPILE_PROPERTIES")) {
+            if(System.getenv().containsKey("KOMPILE_PROPERTIES")) {
                 File kompileProperties = new File(System.getenv("KOMPILE_PROPERTIES"));
                 System.out.println("Loading properties from " + System.getenv("KOMPILE_PROPERTIES"));
                 Properties properties = new Properties();
