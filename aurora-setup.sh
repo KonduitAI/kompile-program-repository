@@ -24,6 +24,7 @@ ln -s /opt/nec/ve/bin/nc++-3.5.1 /opt/nec/ve/bin/nc++
 ln -s /opt/nec/ve/bin/nfort-3.5.1 /opt/nec/ve/bin/nfort
 ln -s /opt/nec/ve/bin/ncc-3.5.1 /opt/nec/ve/bin/ncc
 ln -s /usr/bin/python2 /usr/bin/python
+ln -s /opt/nec/ve/nfort/lib64/libnfort_x86_64.so.2.0 /opt/nec/ve/nfort/lib64/libnfort_x86_64.so.2
 ln -s /opt/nec/ve/share/veda/ /usr/local/ve/veda
 wget https://raw.githubusercontent.com/eclipse/deeplearning4j/master/libnd4j/build_ve_prerequisites.sh -O /kompile/build_ve_prerequisites.sh
 wget https://raw.githubusercontent.com/eclipse/deeplearning4j/master/libnd4j/vednn_mergian.patch -O /kompile/vednn_mergian.patch
