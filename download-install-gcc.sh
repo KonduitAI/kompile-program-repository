@@ -49,7 +49,7 @@ build_target=x86_64-unknown-linux-gnu
 #
 # WARNING: do not make 'source_dir' and 'build_dir' the same, or
 # subdirectory of each other! It will cause build problems.
-install_dir=${HOME}/opt/gcc-${gcc_version}
+install_dir=${HOME}/.kompile/gcc-${gcc_version}
 build_dir=/var/tmp/$(whoami)/gcc-${gcc_version}_build
 source_dir=/var/tmp/$(whoami)/gcc-${gcc_version}_source
 tarfile_dir=/var/tmp/$(whoami)/gcc-${gcc_version}_tarballs
@@ -182,6 +182,7 @@ __banner Unpacking source code
 __untar  "$source_dir"  "$tarfile_dir/$gcc_tarfile"
 echo "Downloading pre requisites in directory /${source_dir}/gcc-${GCC_VERSION}"
 cd "${source_dir}/gcc-${GCC_VERSION}"
+
 bash  "./contrib/download_prerequisites"
 
 
