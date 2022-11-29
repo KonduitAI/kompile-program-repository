@@ -545,7 +545,6 @@ fi
                                 --buildDl4j=${BUILD_DL4J} \
                                  --libnd4jExtension="${ND4J_EXTENSION}" \
                                 --platform="${ND4J_CLASSIFIER}" \
-                                --libnd4jClassifier="${ND4J_CLASSIFIER}" \
                                 --nd4jBackend="${ND4J_BACKEND}" \
                                  --libnd4jHelper="${ND4J_HELPER}" \
                                  --libnd4jOperations="${ND4J_OPERATIONS}" \
