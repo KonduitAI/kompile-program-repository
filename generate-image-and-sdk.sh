@@ -413,6 +413,12 @@ fi
                      --buildKonduitServing=${BUILD_KONDUIT_SERVING} \
                       --libnd4jOperations="${ND4J_OPERATIONS}" \
                       --libnd4jDataTypes="${ND4J_DATATYPES}"
+            
+            if [ $? -eq 1 ]; then 
+                echo "DL4J build failed. exiting."
+                exit 1
+            fi
+            
          fi
 
         ./kompile build clone-build \
@@ -431,6 +437,10 @@ fi
                       --libnd4jHelper="${ND4J_HELPER}" \
                       --libnd4jOperations="${ND4J_OPERATIONS}" \
                       --libnd4jDataTypes="${ND4J_DATATYPES}"
+         if [ $? -eq 1 ]; then 
+                echo "DL4J build failed. exiting."
+                exit 1
+         fi
         echo "Command pom generate command was ${POM_GENERATE_COMMAND}"
         eval "./kompile ${POM_GENERATE_COMMAND}"
         echo "Generated pom contents:"
@@ -533,6 +543,10 @@ fi
                                 --platform="${ND4J_CLASSIFIER}" \
                                  --libnd4jOperations="${ND4J_OPERATIONS}" \
                                  --libnd4jDataTypes="${ND4J_DATATYPES}"
+                       if [ $? -eq 1 ]; then 
+                         echo "DL4J build failed. exiting."
+                         exit 1
+                       fi         
                     fi
                    
                    ./kompile build clone-build \
@@ -549,6 +563,10 @@ fi
                                  --libnd4jHelper="${ND4J_HELPER}" \
                                  --libnd4jOperations="${ND4J_OPERATIONS}" \
                                  --libnd4jDataTypes="${ND4J_DATATYPES}"
+                       if [ $? -eq 1 ]; then 
+                          echo "DL4J build failed. exiting."
+                          exit 1
+                       fi  
                       echo "Command pom generate command was ${POM_GENERATE_COMMAND}"
                       eval "./kompile ${POM_GENERATE_COMMAND}"
                       echo "Generated pom contents:"
