@@ -326,6 +326,9 @@ echo "ASSEMBLY ${ASSEMBLY}"
 echo "GCC ${GCC}"
 echo "GLIBC ${GLIBC}"
 echo "BUILD_THREADS ${BUILD_THREADS}"
+echo "LD_LIBRARY_PATH ${LD_LIBRARY_PATH}"
+echo "PATH ${PATH}"
+
 function source_backend_end() {
      if [ -z "${ND4J_HELPER}" ]; then
            if test -f "$HOME/.kompile/backend-envs/${ND4J_BACKEND}/${ND4J_CLASSIFIER}.env"; then
