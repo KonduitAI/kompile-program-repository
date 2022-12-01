@@ -325,6 +325,16 @@ echo "BUILD_HEAP_SPACE ${BUILD_HEAP_SPACE}"
 echo "ASSEMBLY ${ASSEMBLY}"
 echo "GCC ${GCC}"
 echo "GLIBC ${GLIBC}"
+
+if [ -z "${LD_LIBRARY_PATH}" ]; then
+   LD_LIBRARY_PATH=""
+fi
+
+
+if [ -z "${PATH}" ]; then
+    PATH=""
+fi
+
 echo "BUILD_THREADS ${BUILD_THREADS}"
 echo "LD_LIBRARY_PATH ${LD_LIBRARY_PATH}"
 echo "PATH ${PATH}"
