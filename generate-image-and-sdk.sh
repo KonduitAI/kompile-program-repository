@@ -383,18 +383,6 @@ fi
       echo "Generated pom contents:"
       cat "${POM_GENERATE_OUTPUT_PATH}"
     BUILD_DIR="$(pwd)"
-    if [[ ! -d "${KOMPILE_PREFIX}/deeplearning4j" ]]; then
-       BUILD_DL4J="true"
-       else 
-           echo "DL4J directory already exists. Skipping build. Delete the dl4j install at ${KOMPILE_PREFIX/deeplearning4j} if you want to build dl4j."
-           BUILD_DL4J="false"
-    fi
-    if [[ ! -d "${KOMPILE_PREFIX}/konduit-serving" ]]; then
-         BUILD_KONDUIT_SERVING="true"
-         else 
-             echo "Konduit Serving directory already exists. Skipping build. Delete the dl4j install at ${KOMPILE_PREFIX/konduit-serving} if you want to build konduit serving."
-             BUILD_KONDUIT_SERVING="false"
-    fi
     if [ "$ASSEMBLY" == "false" ]; then
         ./kompile install install-requisites --os="${OS}" \
                                              --nd4jHelper="${ND4J_HELPER}" \
