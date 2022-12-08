@@ -64,6 +64,7 @@ BUILD_HEAP_SPACE=
 GCC=
 GLIBC=
 BUILD_THREADS=
+BUILD_DL4J="true"
 
 while [[ $# -gt 0 ]]
 do
