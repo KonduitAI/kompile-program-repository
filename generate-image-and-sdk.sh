@@ -66,6 +66,7 @@ GLIBC=
 BUILD_THREADS=
 BUILD_DL4J="true"
 BUILD_KONDUIT_SERVING="true"
+ALLOW_EXTERNAL_COMPILERS="false"
 
 while [[ $# -gt 0 ]]
 do
@@ -86,6 +87,10 @@ case $key in
           ;;
     -p|--pipeline-file)
     PIPELINE_FILE="$value"
+    shift # past argument
+    ;;
+      -aec|--allow-external-compilers)
+    ALLOW_EXTERNAL_COMPILERS="$value"
     shift # past argument
     ;;
      -dt|--nd4j-datatypes)
@@ -327,6 +332,7 @@ echo "BUILD_HEAP_SPACE ${BUILD_HEAP_SPACE}"
 echo "ASSEMBLY ${ASSEMBLY}"
 echo "GCC ${GCC}"
 echo "GLIBC ${GLIBC}"
+echo "ALLOW_EXTERNAL_COMPILERS ${ALLOW_EXTERNAL_COMPILERS}"
 
 
 
@@ -396,6 +402,7 @@ fi
           if [ ! -z "$ND4J_EXTENSION" ] || [ "${ND4J_EXTENSION}" != "" ] || [ ! -z "$ND4J_HELPER" ] || [ "${ND4J_HELPER}" != "" ] && [ ! -f "$HOME/.m2/repository/org/nd4j/${ND4J_BACKEND}/1.0.0-SNAPSHOT/${ND4J_BACKEND}-1.0.0-SNAPSHOT.jar" ] ; then
              echo "Non default extension or helper  specified. In order to use this extension, the default build for the platform is also needed."
            ./kompile build clone-build \
+                     --allowExternalCompilers="${ALLOW_EXTERNAL_COMPILERS}" \
                      --libnd4jBuildThreads=${BUILD_THREADS} \
                      --gcc=${GCC} \
                      --glibc=${GLIBC} \
@@ -418,6 +425,7 @@ fi
          fi
 
         ./kompile build clone-build \
+                     --allowExternalCompilers="${ALLOW_EXTERNAL_COMPILERS}" \
                      --libnd4jBuildThreads=${BUILD_THREADS} \
                      --gcc=${GCC} \
                      --glibc=${GLIBC} \
