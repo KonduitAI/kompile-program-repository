@@ -65,6 +65,7 @@ GCC=
 GLIBC=
 BUILD_THREADS=
 BUILD_DL4J="true"
+BUILD_KONDUIT_SERVING="true"
 
 while [[ $# -gt 0 ]]
 do
